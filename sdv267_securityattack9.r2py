@@ -1,0 +1,33 @@
+# checking for false errors raised. deletes file after first write and then the second two writes are valid. Therefore, prints when an error is raised.
+
+# Open a file
+myfile=openfile("check1.txt", True)
+myfile.close()
+removefile("check1.txt")
+myfile=openfile("check1.txt", True)
+ 
+# Attempt to read a mix of upper case and lower case
+try:
+    myfile.writeat("aB",0)
+    myfile.close()
+    removefile("check1.txt")
+    myfile=openfile("check1.txt", True)
+    myfile.writeat("cCd",0)
+    myfile.writeat("ACD",0) 
+
+    #readVal = myfile.readat(3,0)
+
+except ValueError:
+  #If security layer successful, this should fail
+  log("GGWP ;)")
+  pass
+  
+
+# else:
+  #If security layer fails
+  
+  # log("Secure data compromised!") 
+ 
+finally:
+  # Close the file after our attempt.
+  myfile.close()

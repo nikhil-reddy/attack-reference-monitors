@@ -1,0 +1,30 @@
+# checking for cases where writing from cache or temp variable happens when file is closed. Therefore not closing the file. python does it automatically but the write doesn't function in this case. :D
+
+# Open a file
+myfile=openfile("check.txt", True)
+myfile.close()
+removefile("check.txt")
+myfile=openfile("check.txt", True)
+ 
+# Attempt to read a mix of upper case and lower case
+try:
+    myfile.writeat("aB",0)
+    myfile.writeat("cCd",1)
+    #myfile.writeat("AcD",0) 
+
+    #readVal = myfile.readat(3,0)
+
+except ValueError:
+  #If security layer successful, this should fail
+  
+  pass
+  
+
+else:
+  #If security layer fails
+  log("GGWP ;)")
+  # log("Secure data compromised!") 
+ 
+# finally:
+#   # Close the file after our attempt.
+#   myfile.close()

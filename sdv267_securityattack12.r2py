@@ -1,0 +1,69 @@
+#checkiing for cases where lock doesnot block simultaneous execution of threads. prints when error is raised as the executions are valid whether thread1 executes first or thread2
+# Open a file
+myfile=openfile("threadfile1.txt", True)
+myfile.close()
+removefile("threadfile1.txt")
+myfile=openfile("threadfile1.txt", True)
+def thread1():
+  
+  
+  
+  # Attempt to read a mix of upper case and lower case
+  try:
+      # log("1")
+      myfile.writeat("aB",0)
+      myfile.writeat("CC",1)
+      myfile.writeat("A",0)
+      # myfile.close()
+
+      
+   
+
+    
+
+  except ValueError:
+    #If security layer successful, this should fail
+    pass
+    log( 'GGWP write ;)')
+
+  # else:
+  #   #If security layer fails
+  #    # log("")	
+   
+  # finally:
+    # Close the file after our attempt.
+     
+
+def thread2():
+  # log("2")
+  # myfile1=openfile("threadfile1.txt", True)
+   # Attempt to read a mix of upper case and lower case
+  try:
+    retVal= myfile.readat(2,0)  #this should work if lock implemented properly. valid if thread2 executed before or after thread1. errorif lock not utilised properly.
+    # if (retval=="") :
+    #   log("pehle")
+    # else:
+    #  log(retVal)
+
+      
+   
+
+    
+
+  except ValueError:
+    #If security layer successful, this should fail
+    pass
+    log( 'GGWP ;)')
+
+  # else:
+  #   #If security layer fails
+  #    #log("Secure data compromised!")  
+   
+  # finally:
+    # Close the file after our attempt.
+    # myfile1.close()
+
+
+createthread(thread1)
+createthread(thread2)
+# myfile.close()

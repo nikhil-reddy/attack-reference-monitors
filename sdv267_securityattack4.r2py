@@ -1,0 +1,32 @@
+# checking for false errors raised. prints if layer blocks valid number and special character reads.
+
+# Open a file
+myfile=openfile("hopenofilelikethis.txt", True)
+myfile.close()
+removefile("hopenofilelikethis.txt")
+myfile=openfile("hopenofilelikethis.txt", True)
+ 
+# Attempt to read a mix of upper case and lower case
+try:
+    myfile.writeat("a123@as",0)
+    # myfile.writeat("CCd",1)
+    # myfile.writeat("aCD",0) 
+    
+    readVal = myfile.readat(5,0)
+    #log(readVal)
+
+   
+
+except ValueError:
+  #If security layer successful, this should fail
+  log("GGWP ;)")
+  pass
+  
+
+# else:
+  #If security layer fails
+  # log("Secure data compromised!") 
+ 
+finally:
+  # Close the file after our attempt.
+  myfile.close()

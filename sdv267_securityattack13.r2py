@@ -1,0 +1,30 @@
+# checking if reference monitor lets you write at negative offset.
+
+# Open a file
+myfile=openfile("check.txt", True)
+myfile.close()
+removefile("check.txt")
+myfile=openfile("check.txt", True)
+ 
+# Attempt to read a mix of upper case and lower case
+try:
+    myfile.writeat("writing at negative offset is bad.",-1)
+   
+    
+    # readVal = myfile.readat(2,0)
+    #log(readVal)
+
+except ValueError:
+  #If security layer successful, this should fail
+  
+  pass
+  
+
+else:
+  #If security layer fails
+  log("GGWP ;)")
+  # log("Secure data compromised!") 
+ 
+finally:
+  # Close the file after our attempt.
+  myfile.close()

@@ -1,0 +1,30 @@
+# checking for false errors raised. prints if layer blocks valid writes since numbers can replace uppercase letters.
+
+# Open a file
+myfile=openfile("check.txt", True)
+myfile.close()
+removefile("check.txt")
+myfile=openfile("check.txt", True)
+ 
+# Attempt to read a mix of upper case and lower case
+try:
+    myfile.writeat("aB",0)
+    myfile.writeat("CCd",1)
+    myfile.writeat("A4D",0) 
+
+    #readVal = myfile.readat(3,0)
+
+except ValueError:
+  #If security layer successful, this should fail
+  log("GGWP ;)")
+  pass
+  
+
+# else:
+  #If security layer fails
+  # log("Secure data compromised!") 
+ 
+finally:
+  # Close the file after our attempt.
+  myfile.close()
+  

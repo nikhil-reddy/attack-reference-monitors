@@ -1,0 +1,30 @@
+# Open a file
+myfile=openfile("hopenofilelikethis.txt", True)
+myfile.close()
+removefile("hopenofilelikethis.txt")
+myfile=openfile("hopenofilelikethis.txt", True)
+ 
+# Attempt to read a mix of upper case and lower case
+try:
+    myfile.writeat("aaaaaaaaaaBBBBBBBBBB",0)
+    # myfile.writeat("CCd",1)
+    # myfile.writeat("aCD",0) 
+    for i in xrange(0,6):
+      readVal = myfile.readat(3,i)
+    for i in xrange(10,16):
+      readVal = myfile.readat(3,i)
+
+except ValueError:
+  #If security layer successful, this should fail
+  log("GGWP ;)")
+  pass
+  
+
+# else:
+  #If security layer fails
+  # log("Secure data compromised!") 
+ 
+finally:
+  # Close the file after our attempt.
+  myfile.close()
+  
